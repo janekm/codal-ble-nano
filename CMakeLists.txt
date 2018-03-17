@@ -1,4 +1,4 @@
-project(codal-ble-nano)
+project(codal-microbot)
 
 include("${CODAL_UTILS_LOCATION}")
 
@@ -17,14 +17,14 @@ set(CMAKE_SYSTEM_PROCESSOR "armv7-m" PARENT_SCOPE)
 include_directories(${INCLUDE_DIRS} ${TOP_LEVEL_INCLUDE_DIRS} ${MODEL_INCLUDE_DIRS})
 
 # create our target
-add_library(codal-ble-nano ${TOP_LEVEL_SOURCE_FILES} ${MODEL_SOURCE_FILES})
+add_library(codal-microbot ${TOP_LEVEL_SOURCE_FILES} ${MODEL_SOURCE_FILES})
 
 target_link_libraries(
-    codal-ble-nano
+    codal-microbot
     codal-core
     codal-mbedos
     codal-nrf52
 )
 
 # expose it to parent cmake.
-target_include_directories(codal-ble-nano PUBLIC ${MODEL_INCLUDE_DIRS} ${TOP_LEVEL_INCLUDE_DIRS})
+target_include_directories(codal-microbot PUBLIC ${MODEL_INCLUDE_DIRS} ${TOP_LEVEL_INCLUDE_DIRS})

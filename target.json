@@ -1,5 +1,5 @@
 {
-    "device":"BLE_NANO",
+    "device":"MICROBOT",
     "processor":"NRF52832",
     "architecture":"CORTEX_M4F",
     "toolchain":"ARM_GCC",

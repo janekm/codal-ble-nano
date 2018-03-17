@@ -1,17 +1,17 @@
-#include "BLENano.h"
+#include "Microbot.h"
 
-BLENano nano;
+Microbot microbot;
 
 int main()
 {
-    nano.init();
+    microbot.init();
 
     while(1)
     {
-        nano.io.led.setDigitalValue(1);
-        nano.sleep(200);
+        microbot.io.led.setDigitalValue(1);
+        microbot.sleep(200);
 
-        nano.io.led.setDigitalValue(0);
-        nano.sleep(200);
+        microbot.io.led.setDigitalValue(0);
+        microbot.sleep(200);
     }
 }

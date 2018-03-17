@@ -23,12 +23,12 @@ DEALINGS IN THE SOFTWARE.
 */
 
 /**
-  * Class definition for BLENano IO.
+  * Class definition for Microbot IO.
   * Represents a collection of all I/O pins on the device.
   */
 
 #include "CodalConfig.h"
-#include "BLENanoIO.h"
+#include "MicrobotIO.h"
 
 using namespace codal;
 
@@ -40,7 +40,7 @@ using namespace codal;
   * Accepts a sequence of unique ID's used to distinguish events raised
   * by NRF52Pin instances on the default EventModel.
   */
-BLENanoIO::BLENanoIO() :
+MicrobotIO::MicrobotIO() :
     P28 (ID_PIN_P28, P0_28, PIN_CAPABILITY_AD),
     P29 (ID_PIN_P29, P0_29, PIN_CAPABILITY_AD),
     P30 (ID_PIN_P30, P0_30, PIN_CAPABILITY_AD),
