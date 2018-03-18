@@ -37,7 +37,7 @@ Microbot *ble_nano_device_instance = NULL;
   * that represent various device drivers used to control aspects of the Microbot.
   */
 Microbot::Microbot() :
-    serial(P0_2, NC),
+    serial(p22, p23),
     messageBus(),
     timer(),
     io()

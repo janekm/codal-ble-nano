@@ -41,6 +41,7 @@ using namespace codal;
   * by NRF52Pin instances on the default EventModel.
   */
 MicrobotIO::MicrobotIO() :
+    P27 (ID_PIN_P27, P0_27, PIN_CAPABILITY_AD),
     P28 (ID_PIN_P28, P0_28, PIN_CAPABILITY_AD),
     P29 (ID_PIN_P29, P0_29, PIN_CAPABILITY_AD),
     P30 (ID_PIN_P30, P0_30, PIN_CAPABILITY_AD),
@@ -51,6 +52,7 @@ MicrobotIO::MicrobotIO() :
     P6 (ID_PIN_P6, P0_6, PIN_CAPABILITY_AD),
     P7 (ID_PIN_P7, P0_7, PIN_CAPABILITY_AD),
     P8 (ID_PIN_P8, P0_8, PIN_CAPABILITY_AD),
-    led (ID_PIN_P9, P0_11, PIN_CAPABILITY_AD)
+    P9 (ID_PIN_P9, P0_9, PIN_CAPABILITY_AD),
+    led (ID_PIN_P20, P0_20, PIN_CAPABILITY_AD)
 {
 }

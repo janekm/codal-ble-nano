@@ -6,7 +6,7 @@
         "MBED_LEGACY_TOOLCHAIN": "GCC_ARM;"
     }, 
     "config": {
-        "CODAL_DEBUG": "CODAL_DEBUG_DISABLED", 
+        "CODAL_DEBUG": "CODAL_DEBUG_DIAGNOSTICS", 
         "CODAL_TIMESTAMP": "uint64_t", 
         "DEVICE_COMPONENT_COUNT": 60, 
         "DEVICE_DEFAULT_PULLMODE": "PullMode::None", 
@@ -24,13 +24,14 @@
         "MESSAGE_BUS_LISTENER_MAX_QUEUE_DEPTH": 10, 
         "PROCESSOR_WORD_TYPE": "uint32_t", 
         "SCHEDULER_TICK_PERIOD_US": 4000, 
-        "USE_ACCEL_LSB": 0
+        "USE_ACCEL_LSB": 0,
+        "DMESG_SERIAL_DEBUG":1
     }, 
     "cpp_flags": "-std=c++11 -fwrapv -fno-rtti -fno-threadsafe-statics -fno-exceptions -fno-unwind-tables -Wl,--gc-sections -Wl,--sort-common -Wl,--sort-section=alignment -Wno-array-bounds", 
     "cpu_opts": "-mcpu=cortex-m4 -mthumb -mfpu=fpv4-sp-d16 -mfloat-abi=softfp", 
     "definitions": "-DNRF52 -DDEVICE_SRAM_END=0x20008000 -DTARGET_NRF52832 -D__CORTEX_M4 -DBLE_STACK_SUPPORT_REQD -DSOFTDEVICE_PRESENT -DS132  -DNORDIC -DMCU_NRF52 -DMCU_NRF52832 -DNRF5 -DSDK11 -DNRF52_COMMON -DTARGET_NORDIC_NRF52DK -DBOARD_PCA10040 -DS132 -DCONFIG_GPIO_AS_PINRESET -DBLE_STACK_SUPPORT_REQD -DSWI_DISABLE0 -DNRF52_PAN_12 -DNRF52_PAN_15 -DNRF52_PAN_58 -DNRF52_PAN_55 -DNRF52_PAN_54 -DNRF52_PAN_31 -DNRF52_PAN_30 -DNRF52_PAN_51 -DNRF52_PAN_36 -DNRF52_PAN_53 -DNRF52_PAN_20 -DNRF52_PAN_64 -DNRF52_PAN_62 -DNRF52_PAN_63 -DDEVICE_ANALOGIN -DDEVICE_ERROR_PATTERN -DDEVICE_I2C -DDEVICE_I2C_ASYNCH -DDEVICE_INTERRUPTIN -DDEVICE_LOWPOWERTIMER -DDEVICE_PORTIN -DDEVICE_PORTINOUT -DDEVICE_PORTOUT -DDEVICE_PWMOUT -DDEVICE_RTC -DDEVICE_SERIAL -DDEVICE_SERIAL_ASYNCH -DDEVICE_SERIAL_FC -DDEVICE_SLEEP -DDEVICE_SPI -DDEVICE_SPI_ASYNCH -DDEVICE_SPISLAVE -DMBED_CONF_PLATFORM_DEFAULT_SERIAL_BAUD_RATE=9600 -D__MBED__ -DMBED_RTOS_SINGLE_THREAD -DMBED_CONF_RTOS_PRESENT -DTOOLCHAIN_GCC", 
     "device": "MICROBOT", 
-    "generate_bin": true, 
+    "generate_bin": false, 
     "generate_hex": true, 
     "libraries": [
         {
@@ -55,6 +56,6 @@
     "linker_flags": "-Wl,--no-wchar-size-warning -Wl,-wrap,main -Wl,--gc-sections -Wl,--wrap,exit -Wl,--wrap,atexit -mcpu=cortex-m4 -mthumb -mfpu=fpv4-sp-d16 -mfloat-abi=softfp -Wl,--start-group -lstdc++ -lsupc++ -lm -lc -lgcc -lnosys -Wl,--end-group", 
     "post_process": "", 
     "processor": "NRF52832", 
-    "snapshot_version": "v0.0.3", 
+    "snapshot_version": "v0.0.5", 
     "toolchain": "ARM_GCC"
 }

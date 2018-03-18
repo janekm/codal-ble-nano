@@ -76,6 +76,7 @@ namespace codal
         public:
 
             NRF52Pin          pin[0];
+            NRF52Pin          P27;
             NRF52Pin          P28;
             NRF52Pin          P29;
             NRF52Pin          P30;
@@ -86,6 +87,7 @@ namespace codal
             NRF52Pin          P6;
             NRF52Pin          P7;
             NRF52Pin          P8;
+            NRF52Pin          P9;
             NRF52Pin          led;
 
             /**
