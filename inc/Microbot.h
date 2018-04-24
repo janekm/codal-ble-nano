@@ -48,6 +48,7 @@ DEALINGS IN THE SOFTWARE.
 #include "MicrobotIO.h"
 #include "CodalFiber.h"
 #include "MessageBus.h"
+#include "NRF52Timer.h"
 
 
 // Status flag values
@@ -73,16 +74,20 @@ namespace codal
              * fiber when someone has the intention of using these components.
              */
             void onListenerRegisteredEvent(Event evt);
+            void idleCallback(Event evt);
 
             // Pin ranges used for LED matrix display.
 
         public:
 
-            codal::_mbed::Serial        serial;
+            mbed::Serial        serial;
             MessageBus                  messageBus;
             codal::_mbed::Timer         timer;
             MicrobotIO                  io;
-            //Button                      buttonA;
+            mbed::I2C                   i2c;
+            mbed::SPI                   apa_spi;
+            Button                      buttonA;
+            Button                      buttonB;
 
             // Persistent key value store
             //MicrobotStorage           storage;
@@ -127,7 +132,6 @@ namespace codal
              * A periodic callback invoked by the fiber scheduler idle thread.
              * We use this for any low priority, background housekeeping.
              */
-            virtual void idleCallback();
 
             /**
              * Determine the time since this Microbot was last reset.
@@ -176,7 +180,7 @@ namespace codal
     }
 }
 
-void nano_dmesg_flush();
+void microbot_dmesg_flush();
 
 using namespace codal;
 

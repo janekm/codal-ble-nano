@@ -88,7 +88,13 @@ namespace codal
             NRF52Pin          P7;
             NRF52Pin          P8;
             NRF52Pin          P9;
+            NRF52Pin          i2cAD1;
+            NRF52Pin          i2cAD2;
+            NRF52Pin          i2cADB1;
+            NRF52Pin          i2cADB2;
             NRF52Pin          led;
+            NRF52Pin          buttonPinA;
+            NRF52Pin          buttonPinB;
 
             /**
              * Constructor.

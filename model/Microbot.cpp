@@ -28,7 +28,7 @@ DEALINGS IN THE SOFTWARE.
 
 using namespace codal;
 
-Microbot *ble_nano_device_instance = NULL;
+Microbot *microbot_device_instance = NULL;
 
 /**
   * Constructor.
@@ -37,14 +37,20 @@ Microbot *ble_nano_device_instance = NULL;
   * that represent various device drivers used to control aspects of the Microbot.
   */
 Microbot::Microbot() :
-    serial(p22, p23),
+    serial(p22, p23, 38400),
     messageBus(),
     timer(),
-    io()
+    io(),
+    i2c(p27, p28),
+    apa_spi(p8, NC, p7),
+    buttonA(io.buttonPinA, DEVICE_ID_BUTTON_A),
+    buttonB(io.buttonPinB, DEVICE_ID_BUTTON_B)
 {
     // Clear our status
     status = 0;
-    ble_nano_device_instance = this;
+    microbot_device_instance = this;
+    serial.baud(38400);
+    i2c.frequency(400000);
 
     // Ensure NFC pins are configured as GPIO. If not, update the non-volatile UICR.
     if (NRF_UICR->NFCPINS)
@@ -67,7 +73,7 @@ Microbot::Microbot() :
 
     // Configure serial port for debugging
     //serial.set_flow_control(mbed::Serial::Disabled);
-    serial.baud(115200);
+    //serial.baud(115200);
 }
 
 /**
@@ -94,6 +100,7 @@ int Microbot::init()
 
     // Bring up fiber scheduler.
     scheduler_init(messageBus);
+    //timer.start();
 
     for(int i = 0; i < DEVICE_COMPONENT_COUNT; i++)
     {
@@ -108,9 +115,10 @@ int Microbot::init()
     // We do this to enable initialisation of those services only when they're used,
     // which saves processor time, memeory and battery life.
     messageBus.listen(DEVICE_ID_MESSAGE_BUS_LISTENER, DEVICE_EVT_ANY, this, &Microbot::onListenerRegisteredEvent);
-
-    codal_dmesg_set_flush_fn(nano_dmesg_flush);
+    messageBus.listen(DEVICE_ID_SCHEDULER, DEVICE_SCHEDULER_EVT_IDLE, this, &Microbot::idleCallback, MESSAGE_BUS_LISTENER_IMMEDIATE);
+    codal_dmesg_set_flush_fn(microbot_dmesg_flush);
     status |= DEVICE_COMPONENT_STATUS_IDLE_TICK;
+    DMESG("init()\r\n");
 
     return DEVICE_OK;
 }
@@ -124,6 +132,7 @@ int Microbot::init()
   */
 void Microbot::onListenerRegisteredEvent(Event evt)
 {
+    DMESG("onListenerRegisteredEvent\r\n");
 }
 
 /**
@@ -131,19 +140,22 @@ void Microbot::onListenerRegisteredEvent(Event evt)
   * We use this for any low priority, backgrounf housekeeping.
   *
   */
-void Microbot::idleCallback()
+void Microbot::idleCallback(Event evt)
 {
-    codal_dmesg_flush();
+    //codal_dmesg_flush();
+    //this->io.led.setDigitalValue(1);
+    //DMESG("idle");
+    microbot_dmesg_flush();
 }
 
-void nano_dmesg_flush()
+void microbot_dmesg_flush()
 {
 #if CONFIG_ENABLED(DMESG_SERIAL_DEBUG)
 #if DEVICE_DMESG_BUFFER_SIZE > 0
-    if (codalLogStore.ptr > 0 && ble_nano_device_instance)
+    if (codalLogStore.ptr > 0 && microbot_device_instance)
     {
         for (uint32_t i=0; i<codalLogStore.ptr; i++)
-            ((Microbot *)ble_nano_device_instance)->serial.putc(codalLogStore.buffer[i]);
+            ((Microbot *)microbot_device_instance)->serial.putc(codalLogStore.buffer[i]);
 
         codalLogStore.ptr = 0;
     }
