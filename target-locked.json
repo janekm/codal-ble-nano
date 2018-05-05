@@ -35,10 +35,10 @@
     "generate_hex": true, 
     "libraries": [
         {
-            "branch": "998df31f855e77f28395e469581cde9463f55007", 
+            "branch": "6ca25893ac53e6e661a0c2f84b411fd9e034051f", 
             "name": "codal-core", 
             "type": "git", 
-            "url": "https://github.com/lancaster-university/codal-core"
+            "url": "https://github.com/janekm/codal-core"
         }, 
         {
             "branch": "a603e162b8e69ac615da2586d41da104600fa599", 
@@ -50,7 +50,7 @@
             "branch": "f0e1236803b188ba8b4fc1bd9f4e6b6870cb5a9f", 
             "name": "codal-nrf52", 
             "type": "git", 
-            "url": "https://github.com/lancaster-university/codal-nrf52"
+            "url": "https://github.com/janekm/codal-nrf52"
         }
     ], 
     "linker_flags": "-Wl,--no-wchar-size-warning -Wl,-wrap,main -Wl,--gc-sections -Wl,--wrap,exit -Wl,--wrap,atexit -mcpu=cortex-m4 -mthumb -mfpu=fpv4-sp-d16 -mfloat-abi=softfp -Wl,--start-group -lstdc++ -lsupc++ -lm -lc -lgcc -lnosys -Wl,--end-group", 
