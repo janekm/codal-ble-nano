@@ -41,7 +41,7 @@
             "url": "https://github.com/janekm/codal-core"
         }, 
         {
-            "branch": "a603e162b8e69ac615da2586d41da104600fa599", 
+            "branch": "751a4b8d76a61a9de898d28b955d51ddaaedb78b", 
             "name": "codal-mbedos", 
             "type": "git", 
             "url": "https://github.com/janekm/codal-mbedos"
