@@ -35,13 +35,13 @@
     "generate_hex": true, 
     "libraries": [
         {
-            "branch": "6ca25893ac53e6e661a0c2f84b411fd9e034051f", 
+            "branch": "883882b956b1a29619280b5d1ccfc555ee5928ed", 
             "name": "codal-core", 
             "type": "git", 
             "url": "https://github.com/janekm/codal-core"
         }, 
         {
-            "branch": "751a4b8d76a61a9de898d28b955d51ddaaedb78b", 
+            "branch": "3130c4a484915f451522a6eeee0108aadde73bd6", 
             "name": "codal-mbedos", 
             "type": "git", 
             "url": "https://github.com/janekm/codal-mbedos"
