@@ -65,6 +65,10 @@ namespace codal
         void displayFrame(uint8_t f);
         void renderPlasma(float sec);
         void sendImage(char* image_data);
+        void pushFrame(void);
+        void setPixel(int x, int y, char colour);
+
+        char getPixel(int x, int y);
 
         private:
 
@@ -72,8 +76,6 @@ namespace codal
         void islWriteRegister(uint16_t address, uint8_t reg, uint8_t *data, int len);
 
         void configure(void);
-        void pushFrame(void);
-
     };
 }
 

@@ -132,7 +132,7 @@ void codal::LEDArray::renderPlasma(float sec) {
     }
     if (error_count > 2) {
         //DMESG("I2C Reset\r\n");
-        NVIC_SystemReset();
+        // NVIC_SystemReset();
         //NRF_TWIM1->ENABLE = 0;
         //fiber_sleep(200);
         //NRF_TWIM1->ENABLE = 1;
@@ -167,6 +167,15 @@ void codal::LEDArray::sendImage(char* image_data) {
         is31_frame_buffer[i] = image_data[i];
     }
     pushFrame();
+}
+
+void codal::LEDArray::setPixel(int x, int y, char colour) {
+    is31_frame_buffer[x+y*16] = colour;
+    //pushFrame();
+}
+
+char codal::LEDArray::getPixel(int x, int y) {
+    return is31_frame_buffer[x+y*16];
 }
 /**
   * Constructor.
